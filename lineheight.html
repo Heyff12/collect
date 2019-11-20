@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Line-height vertical-align</title>
+    <style type="text/css">
+        h3 {
+            color: green;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        p.small {
+            /* line-height: 90%; */
+            line-height: 0.9;
+            /* line-height: 100%; */
+        }
+
+        p.big {
+            /* line-height: 200%; */
+            line-height: 2;
+        }
+
+        p.normal {
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>正常</h3>
+    <p>
+        这是拥有标准行高的段落。 在大多数浏览器中默认行高大约是 110% 到 120%。 这是拥有标准行高的段落。
+        这是拥有标准行高的段落。 这是拥有标准行高的段落。 这是拥有标准行高的段落。 这是拥有标准行高的段落。
+    </p>
+    <h3>normal</h3>
+    <p class="normal">
+        这是拥有标准行高的段落。 在大多数浏览器中默认行高大约是 110% 到 120%。 这是拥有标准行高的段落。
+        这是拥有标准行高的段落。 这是拥有标准行高的段落。 这是拥有标准行高的段落。 这是拥有标准行高的段落。
+    </p>
+
+    <h3>100%</h3>
+    <p class="small">
+        这个段落拥有更小的行高。这个段落拥有更小的行高。这个段落拥有更小的行高。这个段落拥有更小的行高。
+        这个段落拥有更小的行高。这个段落拥有更小的行高。这个段落拥有更小的行高。
+    </p>
+
+    <p class="big">
+        这个段落拥有更大的行高。这个段落拥有更大的行高。这个段落拥有更大的行高。这个段落拥有更大的行高。
+        这个段落拥有更大的行高。这个段落拥有更大的行高。这个段落拥有更大的行高。
+    </p>
+
+
+    <div style="vertical-align: middle;display: table-cell;">
+        <img src="https://avatar.csdn.net/3/1/6/3_huawuque004.jpg" alt="">
+        <p>文本居中</p>
+    </div>
+
+    <p>这种情况下图片和文字可以分行显示文字在图片下面同时图片和文字作为整体在元素内垂直居中。</p>
+
+    <div style="height:180px;line-height:180px;">
+        <img src="https://avatar.csdn.net/3/1/6/3_huawuque004.jpg" alt="图片" style="vertical-align:middle;" />
+        这是文本内容.
+    </div>
+
+    <p>这种情况下文字是因为line-height属性而居中，跟vertical-align属性没有关系。
+        同时img对齐在middle线上，但是如果父盒子去掉了line-height属性的话那么将会不起作用。（可以试试bottom和text-bottom的不同。）</p>
+
+</body>
+
+</html>

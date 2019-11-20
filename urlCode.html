@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Url中的部分字符会被转义</title>
+  </head>
+  <body>
+    <h2>Url中的字符会被转义，出现错误</h2>
+    <h4>search中的+变成了空格,/?#%都得到了保留，但是&被当做属性连接符</h4>
+    <h4>search中的value，尽量避免出现&</h4>
+    <pre>
+            网址URL中特殊字符转义编码
+            字符    -    URL编码值
+            
+            空格    -    %20
+            "          -    %22
+            #         -    %23
+            %        -    %25
+            &         -    %26
+            (          -    %28
+            )          -    %29
+            +         -    %2B
+            ,          -    %2C
+            /          -    %2F
+            :          -    %3A
+            ;          -    %3B
+            <         -    %3C
+            =         -    %3D
+            >         -    %3E
+            ?         -    %3F
+            @       -    %40
+            \          -    %5C
+            |          -    %7C 
+            
+            URL特殊字符转义，URL中一些字符的特殊含义，基本编码规则如下：
+            1、空格换成加号(+)
+            2、正斜杠(/)分隔目录和子目录
+            3、问号(?)分隔URL和查询
+            4、百分号(%)制定特殊字符
+            5、#号指定书签
+            6、&号分隔参数
+            
+            
+            如果需要在URL中用到，需要将这些特殊字符换成相应的十六进制的值
+            +     %2B
+            /      %2F
+            ?     %3F
+            %    %25
+            #     %23
+            &    %26
+    </pre>
+
+    <script>
+      console.log("-----------------测试+-------------------------------------------------------------------------------------");
+      var paramsString = "q=URLUtils.searchParams&topic=api&data=aaaa=b+ddddd";
+      console.log("-------params----", paramsString);
+      var searchParams = new URLSearchParams(paramsString);
+
+      for (let p of searchParams) {
+        console.log(p);
+      }
+      //["q", "URLUtils.searchParams"]
+      //["topic", "api"]
+      //["data", "aaaa=b ddddd"]
+      console.log("-------data-----", searchParams.get("data"));
+      console.log("--------data中的+变成了空格");
+
+      const a = "data=aaaa==b+ddddd";
+      console.log(a.split("=")); //["data", "aaaa", "", "b+ddddd"]
+      console.log(a.split("=", 2)); //["data", "aaaa"]
+
+      console.log("-----把+转义%2B-----");
+      var paramsRight = paramsString.replace(/\+/g, "%2B");
+      console.log("-------params----", paramsRight);
+      var searchParams1 = new URLSearchParams(paramsRight);
+      console.log("-------data-----", searchParams1.get("data"));
+
+      console.log(
+        "-----------------测试+-/-?-%-#-&--------------------------------------------------------------------------------"
+      );
+
+      var paramsString2 =
+        "q=URLUtils.searchParams&topic=api&data=aaaa=b+d/d?d%d#ddd&dd";
+        console.log("-------params----", paramsString2);
+      var searchParams2 = new URLSearchParams(paramsString2);
+
+      for (let p of searchParams2) {
+        console.log(p);
+      }
+      //["q", "URLUtils.searchParams"]
+      //["topic", "api"]
+      //["data", "aaaa=b ddddd"]
+      console.log("-------data-----", searchParams2.get("data"));
+      console.log("--------data中的+变成了空格,/?#%都得到了保留，但是&被当做属性连接符");
+
+      console.log("-----把+转义%2B-----");
+      var paramsRight = paramsString.replace(/\+/g, "%2B");
+      console.log("-------params----", paramsRight);
+      var searchParams1 = new URLSearchParams(paramsRight);
+      console.log("-------data-----", searchParams1.get("data"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>cookie</title>
+    <style></style>
+  </head>
+  <body>
+    <pre>
+      在设置cookie的过期时间中：
+      max-age 的优先级 高于 expires
+      max-age 设置值 以 秒 为单位
+
+    </pre>
+
+
+    <script>
+      //获取cookie
+      function GetCookie(cookieName) {
+        var strCookie = document.cookie;
+        // 将多cookie切割为多个名/值对
+        var arrCookie = strCookie.split("; ");
+        for (var i = 0; i < arrCookie.length; i++) {
+          // 遍历cookie数组，处理每个cookie对
+          var arr = arrCookie[i].split("=");
+          // 找到名称为cookieName的cookie，并返回它的值
+          if (arr[0] == cookieName) return arr[1];
+        }
+        return "";
+      }
+      //删除cookie
+      function deleteCookie(username) {
+        var date = new Date();
+        // // 删除一个cookie，就是将其过期时间设定为一个过去的时间
+        date.setTime(date.getTime() - 10000);
+        document.cookie = username + "=v; expires=" + date.toGMTString();
+      }
+      // /**/**
+      // * 设置Cookie （通用函数）
+      // * @param {string} cookieName Cookie 名称
+      // * @param {string} cookieValue Cookie 值
+      // * @param {string} nDays Cookie 过期天数
+
+      function SetCookie(cookieName, cookieValue, nDays) {
+        /**/
+        /* 当前日期 */
+        var today = new Date();
+        /**/
+        /* Cookie 过期时间 */
+        var expire = new Date();
+        /**/
+        /* 如果未设置nDays参数或者nDays为0，取默认值 1 ，(默认1分钟)*/
+        if (nDays == null || nDays == 0) nDays = 1 / 24 / 60;  
+        /**/
+        /* 计算Cookie过期时间 */
+        expire.setTime(today.getTime() + nDays * 24 * 60 * 60 * 1000); //获取毫秒数
+        /**/
+        /* 设置Cookie值 */
+        document.cookie =
+          cookieName +
+          "=" +
+          escape(cookieValue) +
+          ";expires=" +
+          expire.toGMTString() +
+          ";path=/";
+      }
+
+      function SetCookieMaxage(cookieName, cookieValue, nDays) {
+        /**/
+        /* 当前日期 */
+        var today = new Date();
+        /**/
+        /**/
+        /* 如果未设置nDays参数或者nDays为0，取默认值 1 ，(默认1分钟)*/
+        if (nDays == null || nDays == 0) nDays = 1 / 24 / 60;  
+        /**/
+        /* 计算Cookie过期时间 */
+        var maxAge = 60;
+        /**/
+        /* 设置Cookie值 */
+        document.cookie =
+          cookieName +
+          "=" +
+          escape(cookieValue) +
+          ";max-age=" +
+          maxAge +
+          ";path=/";
+      }
+
+      function SetCookieBoth(cookieName, cookieValue, nDays) {
+        /**/
+        /* 当前日期 */
+        var today = new Date();
+        /**/
+        /* Cookie 过期时间 */
+        var expire = new Date();
+        /**/
+        /* 如果未设置nDays参数或者nDays为0，取默认值 1 ，(默认1分钟)*/
+        if (nDays == null || nDays == 0) nDays = 1 / 24 / 60;  
+        /**/
+        /* 计算Cookie过期时间 */
+        expire.setTime(today.getTime() + nDays * 24 * 60 * 60 * 1000); //获取毫秒数
+        /**/
+        var maxAge = 30;
+        /* 设置Cookie值 */
+        document.cookie =
+          cookieName +
+          "=" +
+          escape(cookieValue) +
+          ";max-age=" +
+          maxAge +
+          ";expires=" +
+          expire.toGMTString() +
+          ";path=/";
+      }
+
+      //设置cookie
+      SetCookie('test','haaahhahahahah')
+      SetCookieMaxage('test-age','haaahhahahahah')
+      SetCookieBoth('test-both','haaahhahahahah')
+    </script>
+  </body>
+</html>

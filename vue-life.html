@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 生命周期</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p ref="pdom">{{message}}{{now}}</p>
+        <button v-on:click="changeMessage">Change message</button>
+        <button v-on:click="changeMessage1">Change message1</button>
+        <p>{{fullName}}</p>
+        <button v-on:click="changename">Change fullName</button>
+        <ul v-for="item in items">
+            <li>{{item}}</li>
+        </ul>
+        <button v-on:click="changeArr">Change Array</button>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '这是一个data属性，标题',
+                firstName:'haha',
+                lastName:'hehe',
+                items: ['a', 'b', 'c']
+            },
+            watch:{
+                items(val){
+                    console.log('-----触发items---watch-----------------------------------------------------------')
+                    console.log(val)
+                }
+            },
+            computed: {
+                now: function () {
+                    return Date.now()
+                },
+                fullName: {
+                    // getter
+                    get: function () {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    // setter
+                    set: function (newValue) {
+                        console.log(newValue)
+                        var names = newValue.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[names.length - 1]
+                    }
+                }
+            },
+            methods: {
+                changeMessage() {
+                    this.message = '这是一个data属性，变化后'
+                },
+                changeMessage1() {
+                    this.message = '这是一个data属性，变化后--1'
+                },
+                changename(){
+                    this.fullName = 'John Doe'
+                },
+                changeArr(){
+                    // this.items[1] = 'x' //不会触发数值变化、watch、update
+                    // this.$set(this.items, 1, 'x')  //可以触发
+                    this.items.splice(1,1,'x')   //可以触发
+                    console.log(this.items) 
+                }
+            },
+            beforeCreate() {
+                console.log(
+                    'beforeCreate--------无法获取data和methods及refs-----------------------------------------')
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            },
+            created() {
+                console.log('created--------能够获取data和methods，无法获取refs-----------------------------------------')
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+            },
+            beforeMount() {
+                console.log(
+                    'beforeMount--------能够获取data和methods，无法获取refs----------该钩子在服务器端渲染期间不被调用。-------------------------------'
+                )
+                // console.log('在挂载开始之前被调用：相关的 render 函数首次被调用。该钩子在服务器端渲染期间不被调用。')
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            },
+            mounted() {
+                console.log(
+                    'mounted--------能够获取data和methods及refs------------该钩子在服务器端渲染期间不被调用。-----------------------------'
+                )
+                // console.log('注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted：')
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            },
+            beforeUpdate() {
+                console.log(
+                    'beforeUpdate-------------该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。--------------------------------------------------------'
+                )
+                // console.log('数据更新时调用，发生在虚拟 DOM 打补丁之前。这里适合在更新之前访问现有的 DOM，比如手动移除已添加的事件监听器。该钩子在服务器端渲染期间不被调用，因为只有初次渲染会在服务端进行。')
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            },
+            updated() {
+                console.log(
+                    'updated----------------该钩子在服务器端渲染期间不被调用。--------------------------------------------------------'
+                )
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            },
+            beforeDestroy() {
+                console.log(
+                    'beforeDestroy----------------该钩子在服务器端渲染期间不被调用。--------------------------------------------------------'
+                )
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            },
+            destroyed() {
+                console.log(
+                    'destroyed----------------该钩子在服务器端渲染期间不被调用。--------------------------------------------------------'
+                )
+                console.log(this.message)
+                console.log(this.changeMessage)
+                console.log(this.$refs.pdom)
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

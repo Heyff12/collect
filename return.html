@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>终止方法 return break</title>
+  </head>
+  <body>
+    <ul>
+        <li>
+            1、break 终止for循环
+        </li>
+        <li>
+            2、return 终止for循环，并退出当前 外部方法
+        </li>
+        <li>
+            3、return 不能终止forEach循环，也不能退出当前 外部方法
+        </li>
+        <li>
+            4、return 不能终止map循环，也不能退出当前 外部方法
+        </li>
+    </ul>
+
+    <script>
+      function a() {
+        for (let i = 0; i < 5; i++) {
+          console.log(i);
+          if (i == 2) {
+            console.log("hello");
+            break; // 退出循环
+          }
+        }
+        return console.log("end");
+      }
+      a(); // 0 1 2 'hello' end
+
+      console.log("---------------------------------------------");
+
+      function aa() {
+        for (let i = 0; i < 5; i++) {
+          console.log(i);
+          if (i == 2) {
+            console.log("hello");
+            return console.log("world"); // return 退出循环  以及 整个function
+          }
+        }
+        return console.log("end");
+      }
+      aa(); // 0 1 2 'hello' 'world'
+
+      console.log("---------------------------------------------");
+
+      var b = [1, 2, 3, 4, 5];
+      function c() {
+        b.forEach(item => {
+          console.log(item);
+          if (item == 3) {
+            console.log("hello");
+            return console.log("world"); //不能退出 foreach  及 方法
+          }
+        });
+        return console.log("end");
+      }
+      c(); // 1 2 3 hello world 4 5 end
+
+      console.log("---------------------------------------------");
+      
+      function cc() {
+        b.map(item => {
+          console.log(item);
+          if (item == 3) {
+            console.log("hello");
+            return console.log("world"); //不能退出 map  及 方法
+          }
+        });
+        return console.log("end");
+      }
+      cc(); // 1 2 3 hello world 4 5 end
+    </script>
+  </body>
+</html>

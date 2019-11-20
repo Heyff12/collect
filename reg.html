@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>reg</title>
+  </head>
+  <body>
+    <h 1>
+      苏木素-伊红染色（hematoxylin and
+      eosin,HE）苏木素伊红染色法是病理组织切片最经常最广泛使用的一种常规染色法。在工作中，我们常会遇到由于种种原因需
+    </h 1>
+    <h2>
+      最佳答案: happy ending 和谐结局 意思就是说是圆满大结局 要是爱情的
+      就是2个人或个人最后
+    </h2>
+    <script>
+      let str = `<h 1 style="">苏木素-伊红染色（hematoxylin andeosin,HE）苏木素伊红染色法是病理组织切片最经常最广泛使用的一种常规染色法。在工作中，我们常会遇到由于种种原因需</h1>
+    <h2>q最佳答案: happy ending 和谐结局 意思就是说是圆满大结局 要是爱情的< /h2>`;
+    let str1 = `<h 1>111111aaa!@#$~h1哈哈< /h1><h 2>22222</h2 ><h1>33333< /h1><h2>555555</ h2>`
+      let reg = /(<h\s*[1-6].*?>)(.*?)(<\s*\/\s*h\s*[1-6]\s*>)/gi;
+      let result = str1.match(reg);
+      console.log(result);
+      let placeResult = str1.replace(reg,'<p>$2</p>')
+      console.log(placeResult)
+      let placeResult1 = str.replace(reg,'<p>$2</p>')
+      console.log(placeResult1)
+    </script>
+  </body>
+</html>

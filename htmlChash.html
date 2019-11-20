@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>html控制路由hash</title>
+    <style>
+      html{
+        height: 100%;
+      }
+      .contain {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+        overflow-y: auto;
+      }
+      .menu {
+        position: fixed;
+        top:0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contain">
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="#one">第一</a>
+          </li>
+          <li>
+            <a href="#two">第二</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div id="one" style="height: 1200px">
+          <pre>
+                  --------------------------
+                  --------------------------
+                  --------------------------
+                  --------------------------
+                  --------------------------
+                  --------------------------
+        
+              </pre
+          >
+        </div>
+        <div id="two" style="height: 1600px">
+          <pre>
+                    ------------222--------------
+                    -------------222-------------
+                    -------------222-------------
+                    -----------222---------------
+                    -----------222---------------
+                    -----------22---------------
+          
+                </pre
+          >
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

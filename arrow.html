@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrow</title>
+    <style>
+        .arrow {
+            width: 100%;
+            height: 100px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 15px auto;
+            display: flex;
+            background-color: antiquewhite;
+        }
+
+        .fang {
+            width: 0;
+            height: 0;
+            border: 25px solid green;
+            margin: 0 20px;
+        }
+
+        .all {
+            border-color: green rebeccapurple orange palevioletred;
+        }
+
+        .down {
+            border-color: green transparent transparent;
+        }
+
+        .left {
+            border-color: transparent rebeccapurple transparent transparent;
+        }
+
+        .up {
+            border-color: transparent transparent orange transparent;
+        }
+
+        .right {
+            border-color: transparent transparent transparent palevioletred;
+        }
+
+        .double {
+            position: relative;
+        }
+
+        .double::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 25px solid transparent;
+        }
+
+        .down.double::after {
+            border-top-color: peachpuff;
+        }
+
+        .left.double::after {
+            border-right-color: peachpuff;
+        }
+
+        .up.double::after {
+            border-bottom-color: peachpuff;
+        }
+
+        .right.double::after {
+            border-left-color: peachpuff;
+        }
+
+        .down.double.line::after {
+            border-top-color: peachpuff;
+            top: -26px;
+            left: -25px;
+        }
+
+        .left.double.line::after {
+            border-right-color: peachpuff;
+            top: -25px;
+            left: -24px;
+        }
+
+        .up.double.line::after {
+            border-bottom-color: peachpuff;
+            top: -24px;
+            left: -25px;
+        }
+
+        .right.double.line::after {
+            border-left-color: peachpuff;
+            top: -25px;
+            left: -26px;
+        }
+
+        .top {
+            position: relative;
+        }
+
+        .top:before,
+        .top:after {
+            position: absolute;
+            content: '';
+            border-top: 10px transparent dashed;
+            border-left: 10px transparent dashed;
+            border-right: 10px transparent dashed;
+            border-bottom: 10px #fff solid;
+        }
+
+        .top:before {
+            border-bottom: 10px #0099CC solid;
+        }
+
+        .top:after {
+            top: 1px;
+            /*覆盖并错开1px*/
+            border-bottom: 10px #fff solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        通过border-color 控制三角。
+        如果border-width:25px; 则三角形最长的边为50px；
+    </h2>
+
+    <section class="arrow">
+        <div class="fang"></div>
+        <div class="fang all"></div>
+        <div class="fang down"></div>
+        <div class="fang left"></div>
+        <div class="fang up"></div>
+        <div class="fang right"></div>
+    </section>
+
+    <section class="arrow">
+        <div class="fang double down"></div>
+        <div class="fang double left"></div>
+        <div class="fang double up"></div>
+        <div class="fang double right"></div>
+    </section>
+
+    <section class="arrow">
+        <div class="fang double line down"></div>
+        <div class="fang double line left"></div>
+        <div class="fang double line up"></div>
+        <div class="fang double line right"></div>
+
+        <div class="top"></div>
+    </section>
+
+</body>
+
+</html>

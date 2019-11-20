@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>调整iframe页面样式</title>
+    <style>
+        #lg{
+            display:none
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <iframe src="https://u.ebank.cmbchina.com/CmbBank_MB/UI/Public/FidoSafeTips.aspx" 
+        frameborder="0" width="100%" height="1000px" id='iframeDom'></iframe>
+        <iframe src="file:///Users/yaya/Documents/learn/case/cases/reg.html" 
+        frameborder="0" width="100%" height="1000px" id='iframeDom1'></iframe>
+    </div>
+
+    <script>
+        var iframeD = document.getElementById('iframeDom')
+        var iframeD1 = document.getElementById('iframeDom1')
+        console.log(iframeD)
+        iframeD.onload = () =>{
+            console.log(';88-------------------88')
+            console.log(iframeD.contentWindow.document)
+            var ld = iframeD.contentWindow.document.getElementsByClassName(('fbmBtnGroup'))[0]
+            console.log(id)
+            ld.style.display='none'
+        }
+
+
+        iframeD1.onload = () =>{
+            console.log(';99-------------------99')
+            console.log(iframeD1.contentWindow.document)
+            var ld = iframeD1.contentWindow.document.getElementsByClassName(('fbmBtnGroup'))[0]
+            console.log(id)
+            ld.style.display='none'
+        }
+    </script>
+
+    
+    
+</body>
+</html>

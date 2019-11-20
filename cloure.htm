@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包</title>
+    <style>
+            *{
+                padding:0;
+                margin:0;
+            }
+            #app{
+                width:800px;
+                height:300px;
+                margin:20px;
+                border:1px solid greenyellow;
+            }
+            .dadada{
+                width:100%;
+                height: 20px;
+            }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="dadada dididi"></div>
+
+            <pre>
+                    1、闭包：函数定义时的作用域链到函数执行时依然有效
+                </pre>
+    </div>
+    <script>
+        var app = document.getElementById('app')
+        var classDom = document.getElementsByClassName('dadada')[0]
+        var a = app.getBoundingClientRect()
+        console.log(classDom.classList)
+        console.log(classDom.classList.add('hahahha'))
+        console.log(classDom.classList)
+        console.log(classDom.classList.remove('hahahha'))
+        console.log(classDom.classList)
+
+        console.log(a)
+        console.log(app.scrollHeight)
+        console.log(app.scrollWidth)
+        console.log(app.scrollLeft)
+        console.log(app.scrollTop)
+        console.log(app.clientHeight)
+        console.log(app.clientWidth)
+        console.log(app.clientLeft)
+        console.log(app.clientTop)
+        console.log(app.offsetHeight)
+        console.log(app.offsetWidth)
+        console.log(app.offsetLeft)
+        console.log(app.offsetTop)
+        console.log(app.offsetParent)
+        console.log(a)
+        console.log(a)
+        var uniqueInteger = (function(){
+            var counter = 0
+            return function(){
+                return counter++
+            }
+        }())
+        console.log(uniqueInteger()) //0
+        console.log(uniqueInteger()) //1
+        console.log(uniqueInteger()) //2
+        console.log(uniqueInteger()) //3
+        console.log(uniqueInteger()) //4
+
+
+        function counter(){
+            var n=0;
+            return {
+                count: function(){
+                    return n++
+                },
+                reset: function(){n=0}
+            }
+        }
+        var c = counter(),d=counter()
+        console.log(c.count()) //0
+        console.log(d.count()) //0
+        console.log(c.reset()) 
+        console.log(c.count()) //0
+        console.log(d.count()) //1
+
+        function sum(x,y){
+            console.log(x,'-------',y)
+            return x+ y
+        }
+        var data = [1,2,3,4,5,6]
+        var sumer = data.reduce(sum) 
+//  1 "-------" 2
+//  3 "-------" 3
+//  6 "-------" 4
+//  10 "-------" 5
+//  15 "-------" 6  
+        var sumer1 = data.reduce(sum,0)
+//  0 "-------" 1
+//  1 "-------" 2
+//  3 "-------" 3
+//  6 "-------" 4
+//  10 "-------" 5
+//  15 "-------" 6
+    </script>
+</body>
+</html>

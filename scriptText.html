@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scriptText</title>
+</head>
+
+<body>
+    <h2>scriptText</h2>
+
+    <h4><script>alert("XSS")</script></h4>
+
+    <!-- 原始 URL -->
+    <a href="http://localhost:3000/?test=我是变量">http://localhost:3000/?test=我是变量</a>
+    <!-- 攻击 URL -->
+    <a href="http://localhost:3000/?test=" onclick=alert(1)">http://localhost:3000/?test=" onclick=alert(1)</a>
+    <!-- URLEncode -->
+    <a href="http://localhost:3000/?test=%22%20onclick%3balert%281%29%22">http://localhost:3000/?test=%22%20onclick%3balert%281%29%22</a>
+    >
+
+    <br/>
+
+    <script>
+
+        function scriptFilter(str){
+            return str.replace('script','')
+             
+        }
+
+        var data_alert = scriptFilter('<script>alert("XSS")</script>')
+        var data = scriptFilter('<script>alert("XSS")</script>')
+    </script>
+    <!-- '<script>function jumpUrl(url) {window.location.href = url;}</script>' -->
+
+</body>
+
+</html>

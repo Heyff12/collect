@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex 遇到white-space:nowrap</title>
+    <style>
+        .member-item {
+            margin-top: 1px;
+            padding: 15px 0px;
+            background-color: white;
+            width: auto;
+            position:relative;
+            height: 36px;
+            line-height: 36px;
+            /* white-space: nowrap; */
+        }
+
+        .member-item .avatar {
+            background-color: whitesmoke;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            position:absolute;
+            right:0;
+        }
+
+        .member-item .info {
+            /* display: flex; */
+            overflow-x:auto;
+            white-space: nowrap;
+        }
+
+        .member-item .info .signature {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #888;
+            line-height: 36px;
+            display:inline-block;
+            /* display:flex;
+            align-items: center; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="member-item">
+        <image class="avatar" src="https://avatar.csdn.net/3/1/6/3_huawuque004.jpg"></image>
+        <div class="info">
+            <div class="signature">这个人很懒</div>
+            <div class="signature">什么都没写</div>
+            <div class="signature">哈哈哈哈</div>
+            <div class="signature">呵呵呵呵</div>
+            <div class="signature">嘿嘿</div>
+            <div class="signature">恩很</div>
+            <div class="signature">呼啦啦</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
