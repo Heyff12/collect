@@ -12,32 +12,49 @@
     </style>
 </head>
 <body>
+    <pre>
+            var iframeD = document.getElementById('iframeDom') //https，跨域
+            var iframeD1 = document.getElementById('iframeDom1')  //同源，非跨域,k恶意修改
+            var iframeD2 = document.getElementById('iframeDom2') // http,跨域
+    </pre>
     <div>
         <iframe src="https://u.ebank.cmbchina.com/CmbBank_MB/UI/Public/FidoSafeTips.aspx" 
-        frameborder="0" width="100%" height="1000px" id='iframeDom'></iframe>
-        <iframe src="file:///Users/yaya/Documents/learn/case/cases/reg.html" 
-        frameborder="0" width="100%" height="1000px" id='iframeDom1'></iframe>
+        frameborder="0" width="100%" height="700px" id='iframeDom'></iframe>
+        <iframe src="./reg.html" 
+        frameborder="0" width="100%" height="500px" id='iframeDom1'></iframe>
+        <iframe src="http://www.yaya12.com/" 
+        frameborder="0" width="100%" height="700px" id='iframeDom2'></iframe>
     </div>
 
     <script>
-        var iframeD = document.getElementById('iframeDom')
-        var iframeD1 = document.getElementById('iframeDom1')
-        console.log(iframeD)
+        var iframeD = document.getElementById('iframeDom') //https，跨域
+        var iframeD1 = document.getElementById('iframeDom1')  //同源，非跨域
+        var iframeD2 = document.getElementById('iframeDom2') // http,跨域
+        
         iframeD.onload = () =>{
-            console.log(';88-------------------88')
+            console.log(';88-------iframeD------------88')
             console.log(iframeD.contentWindow.document)
-            var ld = iframeD.contentWindow.document.getElementsByClassName(('fbmBtnGroup'))[0]
-            console.log(id)
+            var ld = iframeD.contentWindow.document.getElementsByClassName('fbmBtnGroup')[0]
+            console.log(ld)
             ld.style.display='none'
         }
 
 
         iframeD1.onload = () =>{
-            console.log(';99-------------------99')
+            console.log(';99--------iframeD1-----------99')
             console.log(iframeD1.contentWindow.document)
-            var ld = iframeD1.contentWindow.document.getElementsByClassName(('fbmBtnGroup'))[0]
-            console.log(id)
-            ld.style.display='none'
+            var ld = iframeD1.contentWindow.document.getElementsByTagName('h1')[0]
+            console.log(ld)
+            ld.style.backgroundColor='pink'
+        }
+
+
+        iframeD2.onload = () =>{
+            console.log(';00--------iframeD2-----------00')
+            console.log(iframeD2.contentWindow)
+            var ld = iframeD2.contentWindow.document.getElementsByTagName('h1')[0]
+            console.log(ld)
+            ld.style.backgroundColor='pink'
         }
     </script>
 
